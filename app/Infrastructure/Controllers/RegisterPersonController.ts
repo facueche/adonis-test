@@ -19,7 +19,6 @@ export default class RegisterPersonController
             .handle();
 
           response.status(201);
-          response.header('Content-type', 'application/json')
           response.send({ message: 'Person created' });
     }
 }
