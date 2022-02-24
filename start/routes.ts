@@ -19,8 +19,12 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import FetchPeopleController from 'App/Infrastructure/Controllers/FetchPeopleController';
 import RegisterPersonController from 'App/Infrastructure/Controllers/RegisterPersonController'
 
 Route.post('person', async ({request, response}) => {
   return new RegisterPersonController().handle({request, response});
+})
+Route.get('person', async ({response}) => {
+  return new FetchPeopleController().handle({response});
 })
