@@ -1,3 +1,6 @@
+import * as PersonRegistered from "App/Domain/Events/PersonRegistered";
+import Event from '@ioc:Adonis/Core/Event'
+
 export default class Person
 {
     private uuid: string;
@@ -13,6 +16,7 @@ export default class Person
 
     public static register = (uuid: string, name: string, age: number): Person => {
         let person = new Person(uuid, name, age);
+        Event.emit(PersonRegistered.eventName, new PersonRegistered.default(person)); // TODO: create en event manager on infrastructure layer
         return person;
     }
 

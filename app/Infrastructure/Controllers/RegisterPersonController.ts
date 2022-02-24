@@ -1,9 +1,9 @@
-import RegisterPersonAction from "App/Application/RegisterPersonAction";
 import PersonRepository from "../Repositories/PersonRepository";
+import RegisterPersonAction from "App/Application/RegisterPersonAction";
 
 export default class RegisterPersonController
 {
-    public handle = async (request) => {
+    public handle = async ({request, response}) => {
         const data = request.body();
         const personRepository: PersonRepository = new PersonRepository();
 
@@ -17,5 +17,9 @@ export default class RegisterPersonController
             .setName(name)
             .setAge(age)
             .handle();
+
+          response.status(201);
+          response.header('Content-type', 'application/json')
+          response.send({ message: 'Person created' });
     }
 }

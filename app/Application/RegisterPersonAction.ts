@@ -1,4 +1,4 @@
-import Person from "App/Domain/Person";
+import Person from "App/Domain/Models/Person";
 
 export default class RegisterPersonAction
 {
