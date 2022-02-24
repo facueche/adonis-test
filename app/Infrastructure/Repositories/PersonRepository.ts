@@ -12,8 +12,7 @@ export default class PersonRepository
 
     public fetchAll = async () => {
         const peopleData = await Database
-            .from('people')
-            .select('*');
+            .from('people');
 
         const personBuilderService: PersonBuilderService = new PersonBuilderService();
         const people: Person[] = peopleData.map((personData) => {
