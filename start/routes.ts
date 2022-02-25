@@ -25,15 +25,15 @@ import RegisterPersonController from 'App/Infrastructure/Controllers/RegisterPer
 import Route from '@ioc:Adonis/Core/Route'
 import UpdatePersonController from 'App/Infrastructure/Controllers/UpdatePersonController';
 
-Route.post('person', async (ctx: HttpContextContract) => {
+Route.post('people', async (ctx: HttpContextContract) => {
   return new RegisterPersonController().handle(ctx);
 })
-Route.get('person', async (ctx: HttpContextContract) => {
+Route.get('people', async (ctx: HttpContextContract) => {
   return new FetchPeopleController().handle(ctx);
 })
-Route.get('person/:uuid', async (ctx: HttpContextContract) => {
+Route.get('people/:uuid', async (ctx: HttpContextContract) => {
   return new FetchPersonController().handle(ctx);
 })
-Route.put('person/:uuid', async (ctx: HttpContextContract) => {
+Route.put('people/:uuid', async (ctx: HttpContextContract) => {
   return new UpdatePersonController().handle(ctx);
 })
