@@ -16,7 +16,7 @@ export default class Person
     }
 
     public static register = (uuid: string, name: string, age: number): Person => {
-        let person = new Person(uuid, name, age);
+        const person = new Person(uuid, name, age);
 
         Event.emit(PersonRegistered.eventName, new PersonRegistered.default(person)); // TODO: create en event manager on infrastructure layer
 

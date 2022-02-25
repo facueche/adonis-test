@@ -12,13 +12,14 @@ export default class RegisterPersonController
         const age: number = data.age;
 
         const action: RegisterPersonAction = new RegisterPersonAction();
-        action
+        const person = action
             .setUuid(uuid)
             .setName(name)
             .setAge(age)
             .handle();
 
-          response.status(201);
-          response.send({ message: 'Person created' });
+        response
+            .status(201)
+            .send(person);
     }
 }

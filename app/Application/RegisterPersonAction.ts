@@ -21,7 +21,7 @@ export default class RegisterPersonAction
         return this;
     }
 
-    public handle = () => {
-        Person.register(this.uuid, this.name, this.age);
+    public handle = (): Person => {
+        return Person.register(this.uuid, this.name, this.age);
     }
 }
