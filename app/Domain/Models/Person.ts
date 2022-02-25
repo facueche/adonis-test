@@ -1,5 +1,6 @@
 import * as PersonRegistered from "App/Domain/Events/PersonRegistered";
 import * as PersonUpdated from "App/Domain/Events/PersonUpdated";
+import * as PersonDeleted from "App/Domain/Events/PersonDeleted";
 import Event from '@ioc:Adonis/Core/Event'
 
 export default class Person
@@ -23,12 +24,17 @@ export default class Person
         return person;
     }
 
-    public update = (name: string, age: number): Person => {
+    public update = (name: string, age: number): this => {
         this.name = name;
         this.age = age;
 
         Event.emit(PersonUpdated.eventName, new PersonUpdated.default(this)); // TODO: create en event manager on infrastructure layer
 
+        return this;
+    }
+
+    public delete = (): this => {
+        Event.emit(PersonDeleted.eventName, new PersonDeleted.default(this)); // TODO: create en event manager on infrastructure layer
         return this;
     }
 

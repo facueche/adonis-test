@@ -24,6 +24,7 @@ import FetchPersonController from 'App/Infrastructure/Controllers/FetchPersonCon
 import RegisterPersonController from 'App/Infrastructure/Controllers/RegisterPersonController'
 import Route from '@ioc:Adonis/Core/Route'
 import UpdatePersonController from 'App/Infrastructure/Controllers/UpdatePersonController';
+import DeletePersonController from 'App/Infrastructure/Controllers/DeletePersonController';
 
 Route.post('people', async (ctx: HttpContextContract) => {
   return new RegisterPersonController().handle(ctx);
@@ -36,4 +37,7 @@ Route.get('people/:uuid', async (ctx: HttpContextContract) => {
 })
 Route.put('people/:uuid', async (ctx: HttpContextContract) => {
   return new UpdatePersonController().handle(ctx);
+})
+Route.delete('people/:uuid', async (ctx: HttpContextContract) => {
+  return new DeletePersonController().handle(ctx);
 })
