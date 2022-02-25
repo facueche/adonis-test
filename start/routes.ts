@@ -18,17 +18,22 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import FetchPeopleController from 'App/Infrastructure/Controllers/FetchPeopleController';
 import FetchPersonController from 'App/Infrastructure/Controllers/FetchPersonController';
 import RegisterPersonController from 'App/Infrastructure/Controllers/RegisterPersonController'
+import Route from '@ioc:Adonis/Core/Route'
+import UpdatePersonController from 'App/Infrastructure/Controllers/UpdatePersonController';
 
-Route.post('person', async ({request, response}) => {
-  return new RegisterPersonController().handle({request, response});
+Route.post('person', async (ctx: HttpContextContract) => {
+  return new RegisterPersonController().handle(ctx);
 })
-Route.get('person', async ({response}) => {
-  return new FetchPeopleController().handle({response});
+Route.get('person', async (ctx: HttpContextContract) => {
+  return new FetchPeopleController().handle(ctx);
 })
-Route.get('person/:uuid', async ({response, params}) => {
-  return new FetchPersonController().handle({response, params});
+Route.get('person/:uuid', async (ctx: HttpContextContract) => {
+  return new FetchPersonController().handle(ctx);
+})
+Route.put('person/:uuid', async (ctx: HttpContextContract) => {
+  return new UpdatePersonController().handle(ctx);
 })

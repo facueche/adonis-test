@@ -12,6 +12,7 @@ export default class UpdatePerson
             .update({
                 name: person.getName(),
                 age: person.getAge(),
+                updated_at: new Date(),
             })
     }
 }
